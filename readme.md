@@ -1,62 +1,66 @@
-# Meal Delivery Application
+# Application de Livraison de Repas
 
 ## Introduction
-The Meal Delivery Application is a Java-based application with a graphical interface designed to allow clients to order meals, delivery workers to manage deliveries, and an admin to oversee users and the meal catalog. The application uses a MySQL database for data persistence (users, meals, orders) and provides role-specific interfaces for navigation and order management.
+L'application de livraison de repas est une application basée sur Java avec une interface graphique conçue pour permettre aux clients de commander des repas, aux livreurs de gérer les livraisons, et à un administrateur de superviser les utilisateurs et le catalogue des repas. L'application utilise une base de données MySQL pour la persistance des données (utilisateurs, repas, commandes) et fournit des interfaces spécifiques à chaque rôle pour la navigation et la gestion des commandes.
 
-## Actors and Use Cases
+## Acteurs et Cas d'Utilisation
+
 ### Client
-- **Login**: Authenticate or register with username, password, and address.
-- **View Meals**: View a list of meals with prices and select quantities.
-- **Order Meals**: Select meals with quantities, place an order, and view an invoice.
-- **View Orders**: View a list of invoices and their details.
-- **Cancel Order**: Cancel orders that are in "Pending" status.
+- **Connexion** : S'authentifier ou s'inscrire avec un nom d'utilisateur, un mot de passe et une adresse.
+- **Voir les repas** : Consulter une liste de repas avec leurs prix et sélectionner des quantités.
+- **Commander des repas** : Sélectionner des repas avec des quantités, passer une commande et voir une facture.
+- **Voir les commandes** : Consulter une liste de factures et leurs détails.
+- **Annuler une commande** : Annuler les commandes ayant le statut "En attente".
 
-### Delivery Worker
-- **Login**: Authenticate or register with username, password, name, and phone.
-- **View Invoices**: View all invoices with details (double-click to see meals and quantities).
-- **Update Invoice Status**: Update the status of an invoice (e.g., Delivered, Pending, Fake Client).
-- **Delete Invoice**: Delete an invoice after confirmation.
+### Livreur
+- **Connexion** : S'authentifier ou s'inscrire avec un nom d'utilisateur, un mot de passe, un nom et un numéro de téléphone.
+- **Voir les factures** : Consulter toutes les factures avec leurs détails (double-clic pour voir les repas et quantités).
+- **Mettre à jour le statut des factures** : Modifier le statut d'une facture (par exemple, Livré, En attente, Client fictif).
+- **Supprimer une facture** : Supprimer une facture après confirmation.
 
-### Admin
-- **Login**: Authenticate using predefined credentials (Aziz/Aziz).
-- **Manage Clients**: Add or remove clients (username, password, address).
-- **Manage Delivery Workers**: Add or remove delivery workers (username, password, name, phone).
-- **Manage Meals**: Add or remove meals (name, price).
-- **View Invoices**: View all invoices.
-- **Update Invoice Status**: Update the status of invoices.
-- **Delete Invoice**: Delete invoices.
+### Administrateur
+- **Connexion** : S'authentifier avec des identifiants prédéfinis (Aziz/Aziz).
+- **Gérer les clients** : Ajouter ou supprimer des clients (nom d'utilisateur, mot de passe, adresse).
+- **Gérer les livreurs** : Ajouter ou supprimer des livreurs (nom d'utilisateur, mot de passe, nom, téléphone).
+- **Gérer les repas** : Ajouter ou supprimer des repas (nom, prix).
+- **Voir les factures** : Consulter toutes les factures.
+- **Mettre à jour le statut des factures** : Modifier le statut des factures.
+- **Supprimer une facture** : Supprimer des factures.
 
-## Use Case Diagram
-![Use Case Diagram](Diagrammes/Diagramme%20De%20Cas%20D'Utilisation.png)
+## Diagramme des Cas d'Utilisation
+![Diagramme des Cas d'Utilisation](Diagrammes/Diagramme%20De%20Cas%20D'Utilisation.png)
 
-## Use Case Priorities
-- **High Priority**:
-  - Login (all actors)
-  - Order Meals (Client)
-- **Medium Priority**:
-  - View Meals (Client)
-  - View Orders (Client)
-  - View Invoices (Delivery Worker)
-  - Update Invoice Status (Delivery Worker)
-- **Low Priority**:
-  - Cancel Order (Client)
-  - Delete Invoice (Delivery Worker)
-  - Manage Clients, Delivery Workers, Meals (Admin)
+## Priorités des Cas d'Utilisation
+- **Priorité élevée** :
+  - Connexion (tous les acteurs)
+  - Commander des repas (Client)
+- **Priorité moyenne** :
+  - Voir les repas (Client)
+  - Voir les commandes (Client)
+  - Voir les factures (Livreur)
+  - Mettre à jour le statut des factures (Livreur)
+- **Priorité faible** :
+  - Annuler une commande (Client)
+  - Supprimer une facture (Livreur)
+  - Gérer les clients, livreurs, repas (Administrateur)
 
-## Validation Tests for High-Priority Use Cases
-### Use Case: Login
-| Condition         | C1: Admin Valid | C2: Client Valid | C3: Delivery Worker Valid | C4: Invalid |
-|-------------------|-----------------|------------------|---------------------------|-------------|
-| Username Correct  | Yes             | Yes              | Yes                       | No          |
-| Password Correct  | Yes             | Yes              | Yes                       | No          |
-| Role Selected     | Admin           | Client           | Delivery Worker           | Any         |
-| Expected Result   | AdminPage       | ClientPage       | DeliveryWorkerPage        | Error       |
-| Test ID           | T1              | T2               | T3                        | T4          |
+## Tests de Validation pour les Cas d'Utilisation à Haute Priorité
 
-### Use Case: Order Meals
-| Condition         | C1: Valid Selection | C2: No Selection | C3: Negative Quantity |
-|-------------------|---------------------|------------------|-----------------------|
-| Meals Selected    | Yes                 | No               | Yes                   |
-| Quantity > 0      | Yes                 | N/A              | No                    |
-| Expected Result   | Invoice Displayed   | Error "Select meal" | Error (implicit)      |
-| Test ID           | T5                  | T6               | T7                    |
+### Cas d'Utilisation : Connexion
+
+| Condition               | C1 : Admin Valide | C2 : Client Valide | C3 : Livreur Valide | C4 : Invalide |
+|-------------------------|-------------------|--------------------|---------------------|---------------|
+| Nom d'utilisateur correct | Oui               | Oui                | Oui                 | Non           |
+| Mot de passe correct     | Oui               | Oui                | Oui                 | Non           |
+| Rôle sélectionné         | Admin             | Client             | Livreur             | N'importe     |
+| Résultat attendu         | PageAdmin         | PageClient         | PageLivreur         | Erreur        |
+| ID du test               | T1                | T2                 | T3                  | T4            |
+
+### Cas d'Utilisation : Commander des repas
+
+| Condition               | C1 : Sélection Valide | C2 : Aucune Sélection | C3 : Quantité Négative |
+|-------------------------|-----------------------|-----------------------|------------------------|
+| Repas sélectionnés      | Oui                   | Non                   | Oui                    |
+| Quantité > 0            | Oui                   | N/A                   | Non                    |
+| Résultat attendu        | Facture affichée      | Erreur "Sélectionner un repas" | Erreur (implicite) |
+| ID du test              | T5                    | T6                    | T7
