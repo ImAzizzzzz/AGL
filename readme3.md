@@ -22,7 +22,7 @@
 - **Annulation** : Seules les factures en statut `"Pending"` peuvent être annulées (contrainte fonctionnelle à intégrer dans le modèle).
 
 ### d. Diagramme de classes raffiné
-*(À représenter graphiquement dans un outil UML comme Enterprise Architect ou Lucidchart, non inclus dans ce document textuel)*
+![Diagramme De Classes](Diagrammes/Diagramme%20De%20Classes.png)
 
 ## 2. Modélisation du cycle de vie des objets de la classe `Invoice`
 
@@ -41,6 +41,10 @@ La classe `Invoice` est centrale dans les interactions entre clients et livreurs
 - **Pending → FakeClient** : Événement `mettreAJourStatut("Fake Client")` par le livreur, condition : `status = "Pending"`, action : `status = "Fake Client"`.
 - **Pending → EnDestruction** : Événement `annulerCommande()` par le client ou `supprimerFacture()` par le livreur, condition : `status = "Pending"`.
 - **{Delivered, FakeClient} → EnDestruction** : Événement `supprimerFacture()` par le livreur.
+  
+### c. Transitions entre états
+
+![Diagramme De Machine A Etats](Diagrammes/Diagramme%20De%20Machine%20A%20Etats.png)
 
 ## 3. Deuxième raffinement
 
@@ -83,6 +87,7 @@ PROCEDURE commanderRepas(client: Client, repasSelectionnes: List<RepasQuantite>)
   AFFICHER facture
 FIN PROCEDURE
 ```
+![Diagramme De Séquence - Client Commande Des Repas](Diagrammes/Diagramme%20De%20Séquence%20-%20Client%20Commande%20Des%20Repas.png)
 
 #### DSUC2 : Client Annule une Commande
 **Description textuelle** :
@@ -106,6 +111,7 @@ PROCEDURE annulerCommande(client: Client, facture: Invoice)
   FIN SI
 FIN PROCEDURE
 ```
+![Diagramme De Séquence - Client Annule Une Commande](Diagrammes/Diagramme%20De%20Séquence%20-%20Client%20Annule%20Une%20Commande.png)
 
 #### DSUC3 : Livreur Supprime une Facture
 **Description textuelle** :
@@ -130,3 +136,7 @@ PROCEDURE supprimerFacture(livreur: DeliveryWorker, facture: Invoice)
   FIN SI
 FIN PROCEDURE
 ```
+![Diagramme De Séquence - Livreur Supprime Une Facture](Diagrammes/Diagramme%20De%20Séquence%20-%20Livreur%20Supprime%20Une%20Facture.png)
+
+### Document Complet
+- **Conception Préliminaire complète :** [Meal Delivery Application - AGL - Rendu 3](Meal%20Delivery%20Application%20-%20AGL%20-%20Rendu%203.pdf)
