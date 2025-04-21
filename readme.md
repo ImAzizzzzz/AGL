@@ -51,7 +51,8 @@ L'application de livraison de repas est une application basée sur Java avec une
 **Pré-conditions** :
 - Base de données contient utilisateurs (clients, livreurs, admin prédéfini).
 - Champs username, password, rôle remplis.
-**Post-conditions** :
+  
+**Post-conditions** 
 - Utilisateur authentifié → Ouvre page correspondante (AdminPage, ClientPage, DeliveryWorkerPage).
 - Échec → Message d’erreur ou proposition d’inscription.
 
@@ -69,6 +70,7 @@ L'application de livraison de repas est une application basée sur Java avec une
 - Client connecté.
 - Liste des repas chargée.
 - Au moins un repas sélectionné avec quantité > 0.
+  
 **Post-conditions** :
 - Facture créée dans invoices.
 - Commandes ajoutées dans orders avec quantités.
