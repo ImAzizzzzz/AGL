@@ -44,7 +44,7 @@
 - **Order --- référence --- Meal :** Multiplicité * --- 1 (plusieurs commandes peuvent référencer un même repas).
 
 **Diagramme de classes :**  
-![Diagramme De Classes](Diagrammes/Diagramme%20De%20Classes.png)
+![Diagramme De Classes](Diagrammes/Diagramme%20De%20Classes.svg)
 
 ---
 
@@ -58,7 +58,7 @@
    - La façade crée une facture avec le total.  
    - Pour chaque repas sélectionné, une commande est ajoutée avec la quantité.  
    - La facture est affichée au client.  
-   ![Diagramme De Séquence - Client Commande Des Repas](Diagrammes/Diagramme%20De%20Séquence%20-%20Client%20Commande%20Des%20Repas.png)
+   ![Diagramme De Séquence - Client Commande Des Repas](Diagrammes/Diagramme%20De%20Séquence%20-%20Client%20Commande%20Des%20Repas.svg)
 
 2. **DSUC2 : Client Annule une Commande**  
    **Description textuelle :**  
@@ -66,7 +66,7 @@
    - La façade vérifie si l’état est "Pending".  
    - Si oui, les commandes liées et la facture sont supprimées.  
    - Un message de confirmation ou d’erreur est affiché.  
-   ![Diagramme De Séquence - Client Annule Une Commande](Diagrammes/Diagramme%20De%20Séquence%20-%20Client%20Annule%20Une%20Commande.png)
+   ![Diagramme De Séquence - Client Annule Une Commande](Diagrammes/Diagramme%20De%20Séquence%20-%20Client%20Annule%20Une%20Commande.svg)
 
 3. **DSUC3 : Livreur Supprime une Facture**  
    **Description textuelle :**  
@@ -74,7 +74,7 @@
    - Une confirmation est demandée.  
    - Si "Oui", les commandes liées et la facture sont supprimées.  
    - Un message de confirmation est affiché.  
-   ![Diagramme De Séquence - Livreur Supprime Une Facture](Diagrammes/Diagramme%20De%20Séquence%20-%20Livreur%20Supprime%20Une%20Facture.png)
+   ![Diagramme De Séquence - Livreur Supprime Une Facture](Diagrammes/Diagramme%20De%20Séquence%20-%20Livreur%20Supprime%20Une%20Facture.svg)
 
 ---
 
